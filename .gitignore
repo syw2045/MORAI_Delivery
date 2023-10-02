@@ -1,0 +1,13 @@
+**/build/*
+**/build/**
+
+cartographer_ws/build_isolated/
+cartographer_ws/devel_isolated/
+cartographer_ws/install_isolated/
+
+dilly_ws/build/
+dilly_ws/devel/
+
+**/*.vscode
+**/.vscode
+.vscode
