@@ -18,7 +18,7 @@ class MakeOdom:
         
         rospy.Subscriber("/gps", GPSMessage, self.gpsCB)
         rospy.Subscriber("/imu", Imu, self.imuCB)
-        self.odom_pub = rospy.Publisher('odom_test',Odometry, queue_size=1)
+        self.odom_pub = rospy.Publisher('odom',Odometry, queue_size=1)
 
         self.odom = Odometry()
         self.odom.header.frame_id = 'odom'
@@ -34,7 +34,7 @@ class MakeOdom:
         
         self.proj_UTM = pyproj.Proj(proj='utm', zone=52, ellps='WGS84', preserve_units=False)
 
-        rate = rospy.Rate(30)
+        rate = rospy.Rate(20)
 
         while not rospy.is_shutdown():
             if self.is_gps and self.is_imu:    

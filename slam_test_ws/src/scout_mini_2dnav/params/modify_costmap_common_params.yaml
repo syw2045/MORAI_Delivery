@@ -19,7 +19,7 @@ obstacle_layer:
  combination_method: 1
 
  observation_sources: scan
- scan: {sensor_frame: lidar, data_type: LaserScan, topic: /scan, marking: true, clearing: true}
+ scan: {sensor_frame: base_link, data_type: LaserScan, topic: /scan_filtered, marking: true, clearing: true}
 
 
 inflation_layer:
