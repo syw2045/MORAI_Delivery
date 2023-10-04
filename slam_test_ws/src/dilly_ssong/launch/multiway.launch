@@ -17,6 +17,9 @@
     <!-- move base -->
     <include file="$(find scout_mini_2dnav)/launch/move_base_only.launch" />
 
+    <!--cmd_vel to 6wheel-->
+    <node pkg="dilly_ssong" type="make_6wheel_cmd.py" name="make_6wheel_cmd" />
+
     <!-- rviz -->
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find dilly_ssong)/rviz/nav.rviz" />
 </launch>
