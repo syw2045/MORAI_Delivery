@@ -30,7 +30,7 @@ class Make_6wheel_cmd:
 
     def drivingMsg(self):
         self.driving.Target_linear_velocity = self.linear_x
-        self.driving.Target_angular_velocity = self.angular_z
+        self.driving.Target_angular_velocity = -self.angular_z
 
         if self.linear_x == 0:
             self.driving.cmd_type = 0

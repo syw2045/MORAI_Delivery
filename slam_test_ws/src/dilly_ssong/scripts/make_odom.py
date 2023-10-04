@@ -34,7 +34,7 @@ class MakeOdom:
         
         self.proj_UTM = pyproj.Proj(proj='utm', zone=52, ellps='WGS84', preserve_units=False)
 
-        rate = rospy.Rate(20)
+        rate = rospy.Rate(30)
 
         while not rospy.is_shutdown():
             if self.is_gps and self.is_imu:    
