@@ -10,6 +10,9 @@
 
     <!--  -->
     <include file="$(find pointcloud_to_laserscan)/launch/sample_node.launch" />
+
+    <!-- Lidar -->
+    <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch"/>
   
     <!-- amcl -->
     <include file="$(find scout_mini_2dnav)/launch/amcl.launch" />
