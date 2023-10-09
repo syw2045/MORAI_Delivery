@@ -1,8 +1,8 @@
 use_map_topic: false
 
 odom_frame_id: "odom"
-base_frame_id: "base_footprint"
-# base_frame_id: "base_link"
+# base_frame_id: "base_footprint"
+base_frame_id: "base_link"
 global_frame_id: "map"
 
 ## Publish scans from best pose at a max of 10 Hz
