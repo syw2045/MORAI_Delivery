@@ -11,3 +11,6 @@ dilly_ws/devel/
 **/*.vscode
 **/.vscode
 .vscode
+
+auto_driving_ws/build/
+auto_driving_ws/devel/
