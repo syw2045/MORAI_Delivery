@@ -8,8 +8,8 @@
     <!--  -->
     <include file="$(find gmapping)/launch/slam_gmapping_pr2.launch" />
 
-    <!-- amcl -->
-    <include file="$(find scout_mini_2dnav)/launch/amcl.launch" />
+    <!-- Lidar -->
+    <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch"/>
 
     <!-- rviz -->
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find dilly_ssong)/rviz/slam.rviz" />

@@ -2,6 +2,9 @@
     <!-- odom -->
     <include file="$(find dilly_ssong)/launch/odom.launch" />
 
+    <!-- Lidar -->
+    <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch"/>
+    
     <!-- map file -->
     <arg name="map_file" default="$(find dilly_ssong)/maps/map.yaml"/>
       
