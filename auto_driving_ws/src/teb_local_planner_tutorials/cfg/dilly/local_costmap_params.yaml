@@ -20,7 +20,14 @@ local_costmap:
     laser_scan_sensor: {data_type: LaserScan, topic: scan, marking: true, clearing: true}
 
 
-  plugins:
-   - {name: static_layer,        type: "costmap_2d::StaticLayer"}
-   - {name: obstacle_layer,      type: "costmap_2d::ObstacleLayer"}
-   - {name: inflation_layer,     type: "costmap_2d::InflationLayer"}
+  # plugins:
+  #  - {name: static_layer,        type: "costmap_2d::StaticLayer"}
+  #  - {name: obstacle_layer,      type: "costmap_2d::ObstacleLayer"}
+  #  - {name: inflation_layer,     type: "costmap_2d::InflationLayer"}
+
+    plugins:
+    - {name: obstacle_layer, type: "costmap_2d::VoxelLayer"}
+    - {name: lowbstacle_layer, type: "costmap_2d::VoxelLayer"}
+    - {name: inflation_layer, type: "costmap_2d::InflationLayer"}
+    # - {name: range_sensor_layer, type: "range_sensor_layer::RangeSensorLayer"}
+

@@ -23,6 +23,11 @@ global_costmap:
     - {name: obstacle_layer,          type: "costmap_2d::VoxelLayer"}
     - {name: inflation_layer,         type: "costmap_2d::InflationLayer"}
 
-
+  # plugins:
+  #   - {name: static_layer, type: "costmap_2d::StaticLayer"}
+  #   - {name: obstacle_layer, type: "costmap_2d::VoxelLayer"}
+  #   - {name: lowbstacle_layer, type: "costmap_2d::VoxelLayer"}
+  #   - {name: dynamic_obstacle_layer, type: "dynamic_obstacle_layer::DynamicLayer"} # Uncomment to apply dynamic_obstacle_layer
+  #   - {name: inflation_layer, type: "costmap_2d::InflationLayer"}
 
 
