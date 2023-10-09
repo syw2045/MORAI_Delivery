@@ -1,0 +1,7 @@
+image: /home/ubuntu/Documents/min/two_merged_ws/src/dilly_cartographer/maps/outdoor.pgm
+resolution: 0.050000
+origin: [-227.881421, -41.121545, 0.000000]
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.196
+
