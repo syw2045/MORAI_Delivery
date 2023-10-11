@@ -1,0 +1,9 @@
+<launch>
+    <!-- ****** Maps *****  -->
+    <arg name="map_file" default="$(find dilly_ssong)/maps/outdoor.yaml"/>
+  	
+	<!-- map server -->
+    <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+    <!-- filter outdoor  -->
+</launch>

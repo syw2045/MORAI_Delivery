@@ -1,0 +1,3 @@
+<launch>
+	    <node pkg="dilly_ssong" type="map_change.py" name="map_change" />
+</launch>
