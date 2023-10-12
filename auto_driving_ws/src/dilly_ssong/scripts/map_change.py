@@ -25,11 +25,13 @@ class Map_Change:
                 os.system("gnome-terminal -- bash -c 'roslaunch dilly_ssong outdoor.launch'")
                 self.indoor = False
                 self.outdoor = True
+                rate.sleep()
             
             elif (self.imu_x == 0 and self.imu_y == 0 and self.imu_z == 0) and self.outdoor:
                 os.system("gnome-terminal -- bash -c 'roslaunch dilly_ssong indoor.launch'")
                 self.outdoor = False
                 self.indoor = True
+                rate.sleep()
             rate.sleep()
             
     def imuCB(self,data):

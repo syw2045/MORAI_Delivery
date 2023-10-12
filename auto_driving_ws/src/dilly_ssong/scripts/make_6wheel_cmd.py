@@ -10,7 +10,7 @@ class Make_6wheel_cmd:
         
         rospy.Subscriber("/cmd_vel", Twist, self.cmd_vel_CB)
         
-        self.wheel_cmd_pub = rospy.Publisher('/6wheel_skid_ctrl_cmd',SkidSteer6wUGVCtrlCmd, queue_size=1)
+        self.wheel_cmd_pub = rospy.Publisher('/6wheel_skid_ctrl_cmd',SkidSteer6wUGVCtrlCmd, queue_size=20)
 
         rate = rospy.Rate(20)
 

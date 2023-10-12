@@ -5,6 +5,8 @@
 	<!-- map server -->
     <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
 
+    <include file="$(find dilly_ssong)/launch/odom.launch" />
+    
     <!-- filter outdoor  -->
     <node pkg="amcl" type="amcl" name="amcl" output="screen">
 		<rosparam file="$(find teb_local_planner_tutorials)/cfg/amcl_params.yaml" command="load" />
