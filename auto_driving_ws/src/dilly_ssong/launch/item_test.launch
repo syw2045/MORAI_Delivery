@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="dilly_ssong" type="item_server.py" name="item_req" />
+
+    <node pkg="dilly_ssong" type="item_client.py" name="item_req" />
+</launch>

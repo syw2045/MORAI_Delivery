@@ -16,7 +16,7 @@ class MakeOdom:
     def __init__(self):
         rospy.init_node('make_odom', anonymous=True)
         
-        rospy.Subscriber("/gps", GPSMessage, self.gpsCB)
+        rospy.Subscriber("/gps_origin", GPSMessage, self.gpsCB)
         rospy.Subscriber("/imu", Imu, self.imuCB)
         self.odom_pub = rospy.Publisher('odom',Odometry, queue_size=1)
 
