@@ -5,6 +5,7 @@ import rospy
 from morai_msgs.msg import GPSMessage
 from nav_msgs.msg import Odometry
 from sensor_msgs.msg import Imu
+from std_msgs.msg import Bool
 
 import pyproj
 import tf
@@ -15,8 +16,14 @@ from math import cos,sin,sqrt,pow,atan2,pi
 class MakeOdom:
     def __init__(self):
         rospy.init_node('make_odom', anonymous=True)
-        
-        rospy.Subscriber("/gps", GPSMessage, self.gpsCB)
+        rospy.Subscriber("/flag", Bool, self.flag_cb)
+        self.flag=None
+
+        if not self.flag:
+            rospy.Subscriber("/gps", GPSMessage, self.gpsCB)
+        else:
+            rospy.Subscriber("/gps_origin", GPSMessage, self.gpsCB)
+
         rospy.Subscriber("/imu", Imu, self.imuCB)
         self.odom_pub = rospy.Publisher('odom',Odometry, queue_size=1)
 
@@ -47,6 +54,10 @@ class MakeOdom:
             if self.is_gps and self.is_imu:
                 self.updateOdom()
                 rate.sleep()
+
+    def flag_cb(self,data):
+        self.flag=data
+
 
     def updateOdom(self):
         # 현재 좌표 계산
