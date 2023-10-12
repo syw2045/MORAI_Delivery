@@ -6,4 +6,11 @@
     <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
 
     <!-- filter gps add-->
+    <node pkg="amcl" type="amcl" name="amcl" output="screen">
+		<rosparam file="$(find teb_local_planner_tutorials)/cfg/amcl_params.yaml" command="load" />
+
+        <param name="initial_pose_x"            value="-0.0433"/>
+		<param name="initial_pose_y"            value="0.0602"/>
+		<param name="initial_pose_a"            value="0.735"/>
+	</node>
 </launch>

@@ -14,7 +14,7 @@
 	<!-- map server -->
     <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
 
-	<node pkg="dilly_ssong" type="test_map_change.py" name="test_map_change" />
+	<node pkg="dilly_ssong" type="map_change.py" name="map_change" />
 	
 
     <!--  ************** Navigation ***************  -->

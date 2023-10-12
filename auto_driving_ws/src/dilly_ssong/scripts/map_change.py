@@ -1,52 +1,43 @@
 #!/usr/bin/env python3
 
-import os
 import rospy
-from morai_msgs.msg import GPSMessage
+import os
+from sensor_msgs.msg import Imu
 
 class Map_Change:
     def __init__(self):
         rospy.init_node("map_change")
-        rospy.Subscriber("/gps_origin",GPSMessage,self.gpsCB)
+        rospy.Subscriber("/imu",Imu,self.imuCB)
 
-        self.gps_data_curr = GPSMessage()
-        self.gps_data_prev = GPSMessage()
-
-        self.changed = False
         self.indoor = True
         self.outdoor = False
+        self.changed = True
 
-        rate = rospy.Rate(50)
+        self.imu_data = Imu()
+        self.imu_x = 10
+        self.imu_y = 10
+        self.imu_z = 10
+
+        rate = rospy.Rate(20)
         
         while not rospy.is_shutdown():
-            self.cal_diff()
-            rospy.loginfo("mapsetsetestsetetsetset")
+            if (self.imu_x == 0 and self.imu_y == 0 and self.imu_z == 0) and self.indoor:
+                os.system("gnome-terminal -- bash -c 'roslaunch dilly_ssong outdoor.launch'")
+                self.indoor = False
+                self.outdoor = True
+            
+            elif (self.imu_x == 0 and self.imu_y == 0 and self.imu_z == 0) and self.outdoor:
+                os.system("gnome-terminal -- bash -c 'roslaunch dilly_ssong indoor.launch'")
+                self.outdoor = False
+                self.indoor = True
             rate.sleep()
             
-    def cal_diff(self):
-        if self.latitude_differnce > 0.0007 and self.longitude_differnce < - 0.004 : # changed true
-            if self.indoor:
-                rospy.loginfo("map changed outdoor")
-                os.system("roslaunch dilly_ssong outdoor.launch")
-                self.outdoor = False
-                self.indoor = True
-                # map statud : outdoor
+    def imuCB(self,data):
+        self.imu_data = data
 
-            elif self.outdoor:
-                rospy.loginfo("map changed outdoor")
-                os.system("roslaunch dilly_ssong indoor.launch")
-                self.indoor = True
-                self.outdoor = False
-                # map status : indoor
-
-        else: pass # changed false
-
-    def gpsCB(self,data):
-        if self.gps_data_prev is None:
-            self.gps_data_prev = data
-        else: # value true
-            self.gps_data_prev = self.gps_data_curr
-        self.gps_data_curr = data
+        self.imu_x = self.imu_data.linear_acceleration.x
+        self.imu_y = self.imu_data.linear_acceleration.y
+        self.imu_z = self.imu_data.linear_acceleration.z
 
 def main():
     try:
